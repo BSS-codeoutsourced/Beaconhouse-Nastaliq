@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>ascender</key>
+    <integer>2570</integer>
+    <key>capHeight</key>
+    <integer>1434</integer>
+    <key>copyright</key>
+    <string>Copyright 2026 Beaconhouse Group</string>
+    <key>descender</key>
+    <integer>-900</integer>
+    <key>familyName</key>
+    <string>Beaconhouse Nastaliq</string>
+    <key>italicAngle</key>
+    <integer>0</integer>
+    <key>openTypeHeadCreated</key>
+    <string>2026/05/19 06:50:52</string>
+    <key>openTypeHheaAscender</key>
+    <integer>2570</integer>
+    <key>openTypeHheaDescender</key>
+    <integer>-900</integer>
+    <key>openTypeHheaLineGap</key>
+    <integer>0</integer>
+    <key>openTypeNameDescription</key>
+    <string>This OpenType Urdu Nastaliq font was developed by Muhammad Zeeshan Nasar for Beaconhouse Group.</string>
+    <key>openTypeNameDesigner</key>
+    <string>Muhammad Zeeshan Nasar</string>
+    <key>openTypeNameDesignerURL</key>
+    <string>https://mehrtype.com/</string>
+    <key>openTypeNameLicense</key>
+    <string>This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL</string>
+    <key>openTypeNameLicenseURL</key>
+    <string>https://scripts.sil.org/OFL</string>
+    <key>openTypeNameManufacturer</key>
+    <string>Beaconhouse Group</string>
+    <key>openTypeNameManufacturerURL</key>
+    <string>https://www.beaconhouse.net/</string>
+    <key>openTypeOS2Selection</key>
+    <array>
+      <integer>7</integer>
+    </array>
+    <key>openTypeOS2StrikeoutPosition</key>
+    <integer>700</integer>
+    <key>openTypeOS2StrikeoutSize</key>
+    <integer>100</integer>
+    <key>openTypeOS2Type</key>
+    <array/>
+    <key>openTypeOS2TypoAscender</key>
+    <integer>2570</integer>
+    <key>openTypeOS2TypoDescender</key>
+    <integer>-900</integer>
+    <key>openTypeOS2TypoLineGap</key>
+    <integer>0</integer>
+    <key>openTypeOS2VendorID</key>
+    <string>MEHR</string>
+    <key>openTypeOS2WinAscent</key>
+    <integer>2570</integer>
+    <key>openTypeOS2WinDescent</key>
+    <integer>1000</integer>
+    <key>postscriptUnderlinePosition</key>
+    <integer>-800</integer>
+    <key>postscriptUnderlineThickness</key>
+    <integer>120</integer>
+    <key>styleMapFamilyName</key>
+    <string>Beaconhouse Nastaliq</string>
+    <key>styleMapStyleName</key>
+    <string>regular</string>
+    <key>styleName</key>
+    <string>Regular</string>
+    <key>unitsPerEm</key>
+    <integer>2048</integer>
+    <key>versionMajor</key>
+    <integer>1</integer>
+    <key>versionMinor</key>
+    <integer>0</integer>
+    <key>xHeight</key>
+    <integer>1024</integer>
+  </dict>
+</plist>

@@ -42,8 +42,13 @@ This license is copied in [`OFL.txt`](OFL.txt), and is also available with a FAQ
 
 ## Repository Structure
 
-- `sources/` — `BeaconhouseNastaliq.glyphs` (editable font source) and `config.yaml` (build recipe), including the joining-glyph components and GSUB/GPOS rule definitions.
-- `fonts/` — Final binary font files (TTF/OTF).
+- `sources/` — the font source:
+  - `BeaconhouseNastaliq.glyphs` — editable Glyphs source authored in High-Logic FontCreator (the `.appVersion` is corrected so `glyphsLib` can parse it).
+  - `BeaconhouseNastaliq-Regular.ufo/` — the **fontmake-buildable UFO source**. Its OpenType feature code was recovered from the compiled TTF with `otf2fea` (see [Google Fonts issue #10966](https://github.com/google/fonts/issues/10966)), and glyph widths and cubic contours are normalized so the default `fontmake` pipeline runs unmodified.
+  - `BeaconhouseNastaliq.designspace` — DesignSpace document referencing the UFO.
+  - `config.yaml` — gftools builder recipe (points at the designspace).
+- `tools/regenerate_ufo.py` — script that regenerates the UFO from the `.glyphs` source + compiled TTF. Run this after editing the font in FontCreator (see below).
+- `fonts/` — final binary font file (TTF).
 - `documentation/` — Images, samples, and promotional materials.
 
 ## Changelog
@@ -56,7 +61,11 @@ This license is copied in [`OFL.txt`](OFL.txt), and is also available with a FAQ
 
 ## Building from Source
 
-Beaconhouse Nastaliq is built from a single [Glyphs](https://glyphsapp.com/) source file (`sources/BeaconhouseNastaliq.glyphs`) using the standard open-source Google Fonts toolchain (`fontmake` + `gftools`). This is a single-weight, static font — there are no variable axes or multiple masters.
+Beaconhouse Nastaliq ships a fontmake-buildable UFO source (`sources/BeaconhouseNastaliq-Regular.ufo` + `sources/BeaconhouseNastaliq.designspace`). The OpenType feature code embedded in the UFO was recovered from the compiled TTF with [`otf2fea`](https://github.com/simoncozens/fontFeatures) (see [Google Fonts issue #10966](https://github.com/google/fonts/issues/10966)), because High-Logic FontCreator's Glyphs/FEA exporter produces feature code whose compiled output does not match the font (mark positioning is lost and diacritics float). The UFO is the canonical build source; the `.glyphs` file is the editable design source.
+
+This is a single-weight, static font — there are no variable axes or multiple masters.
+
+### Build the font
 
 1. **Install dependencies:**
 
@@ -64,13 +73,34 @@ Beaconhouse Nastaliq is built from a single [Glyphs](https://glyphsapp.com/) sou
    pip install fontmake gftools
    ```
 
-2. **Build the font:**
+2. **Build the TTF from the UFO source:**
 
    ```bash
    gftools builder sources/config.yaml
    ```
 
-   This reads `sources/config.yaml`, compiles `sources/BeaconhouseNastaliq.glyphs` via `fontmake`, and outputs the final static TTF into `fonts/ttf/`.
+   This reads `sources/config.yaml`, compiles `sources/BeaconhouseNastaliq.designspace` via `fontmake`, and outputs the final static TTF into `fonts/`.
+
+   Equivalently, with plain `fontmake`:
+
+   ```bash
+   fontmake -m sources/BeaconhouseNastaliq.designspace -o ttf --output-dir fonts
+   ```
+
+### Regenerate the UFO after editing the font
+
+The `.glyphs` file is authored and compiled in High-Logic FontCreator. Because FontCreator's Glyphs/FEA export is buggy, the buildable UFO is regenerated from the `.glyphs` source **and** the compiled TTF (the TTF renders correctly and is the source of truth for the OpenType features and glyph metrics). After editing the font in FontCreator and re-exporting the `.glyphs` and `.ttf`:
+
+```bash
+pip install glyphsLib ufo2ft fontTools fontFeatures
+python tools/regenerate_ufo.py \
+    --glyphs sources/BeaconhouseNastaliq.glyphs \
+    --ttf fonts/BeaconhouseNastaliq-Regular.ttf \
+    --ufo sources/BeaconhouseNastaliq-Regular.ufo \
+    --designspace sources/BeaconhouseNastaliq.designspace
+```
+
+This script recovers clean feature code from the TTF via `otf2fea`, maps production glyph names back to the source's friendly names, fixes per-glyph advance widths, converts the source's quadratic contours to cubic, and disables ufo2ft's auto feature writers (the embedded FEA is already complete and the source's numbered mark anchors would otherwise crash the auto `MarkFeatureWriter`). After regeneration, rebuild with `fontmake` as shown above.
 
 
 **Copyright (c) 2026 Beaconhouse Group.**
