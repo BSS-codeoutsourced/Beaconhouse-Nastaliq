@@ -4287,7 +4287,7 @@ lookup MarkToBase1 { # GPOS lookup type MarkToBase
     pos base b_mm1 <anchor -36 1080> mark @Anchor_1;
     pos base alef_f <anchor NULL> mark @Anchor_1;
     pos base b_mi <anchor -350 1179> mark @Anchor_1;
-    pos base b_mv <anchor -333 981> mark @Anchor_1;
+    pos base b_mv <anchor 416 1417> mark @Anchor_1;
     pos base b5 <anchor 18 1250> mark @Anchor_1;
     pos base b_im <anchor 0 1179> mark @Anchor_1;
     pos base b_m3 <anchor 0 1150> mark @Anchor_1;
@@ -52927,7 +52927,7 @@ pos = (0,0);
 },
 {
 name = Anchor_1;
-pos = (-333,981);
+pos = (416,1417);
 },
 {
 name = Anchor_2;
